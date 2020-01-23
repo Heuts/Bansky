@@ -1,24 +1,24 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { API_BASE_URL } from 'src/app/injection-tokens/api-base-url-token';
+import { Component, Inject } from "@angular/core";
+import { UploadService } from "src/app/services/upload.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html'
+  selector: "app-home",
+  templateUrl: "./home.component.html"
 })
 export class HomeComponent {
-  values: string[];
-  private baseUrl: string;
+  fileToUpload: File = null;
 
-  constructor(
-    private http: HttpClient,
-    @Inject(API_BASE_URL) private apiServerUrl: string
-  ) {
-    this.baseUrl = `${apiServerUrl}/api/values`;
-    this.apiConnectionTest().subscribe(res => (this.values = res));
-  }
+  constructor(private uploadService: UploadService) {}
 
-  apiConnectionTest() {
-    return this.http.get<string[]>(`${this.baseUrl}/`);
+  uploadFileToActivity(files: FileList) {
+    this.fileToUpload = files.item(0);
+    this.uploadService.uploadFile(this.fileToUpload).subscribe(
+      data => {
+        // do something, if upload success
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }
