@@ -41,3 +41,9 @@
   <code>npm</code> to install extra packages into it.
 </p>
 <p>{{ values }}</p>
+<div class="form-group">
+  <label for="file">Choose File </label>
+  <input type="file"
+         id="file"
+         (change)="uploadFileToActivity($event.target.files)">
+</div>
