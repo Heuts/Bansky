@@ -11,6 +11,7 @@ import { CounterComponent } from "./components/counter/counter.component";
 import { FetchDataComponent } from "./components/fetch-data/fetch-data.component";
 import { ConfigService } from "./services/config.service";
 import { API_BASE_URL } from "./injection-tokens/api-base-url-token";
+import { UploadService } from "./services/upload.service";
 
 export function init(configService: ConfigService): Function {
   return () => {
@@ -43,6 +44,7 @@ export function getApiBaseUrlFactory(configService: ConfigService) {
   ],
   providers: [
     ConfigService,
+    UploadService,
     {
       provide: API_BASE_URL,
       useFactory: getApiBaseUrlFactory,
