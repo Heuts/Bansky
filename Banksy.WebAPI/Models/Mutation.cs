@@ -4,6 +4,7 @@ namespace Banksy.WebAPI.Models
 {
     public class Mutation
     {
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public string Name { get; set; }
         public string AccountNumber { get; set; }
