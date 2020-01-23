@@ -1,7 +1,6 @@
 import { Injectable, Inject } from "@angular/core";
 import { API_BASE_URL } from "../injection-tokens/api-base-url-token";
-import { HttpClient, HttpRequest, HttpEventType } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"

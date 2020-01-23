@@ -1,4 +1,4 @@
-import { Component, Inject } from "@angular/core";
+import { Component } from "@angular/core";
 import { UploadService } from "src/app/services/upload.service";
 
 @Component({
