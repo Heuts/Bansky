@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Banksy.WebAPI.Services
 {
-    interface IImportService
+    public interface IImportService
     {
         void ImportExcel(IFormFile file);
     }
