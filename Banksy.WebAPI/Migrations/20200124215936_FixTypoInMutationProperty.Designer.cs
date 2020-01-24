@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Banksy.WebAPI.Migrations
 {
     [DbContext(typeof(BanksyContext))]
-    [Migration("20200123215744_TypeFix")]
-    partial class TypeFix
+    [Migration("20200124215936_FixTypoInMutationProperty")]
+    partial class FixTypoInMutationProperty
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

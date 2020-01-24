@@ -2,7 +2,7 @@
 
 namespace Banksy.WebAPI.Migrations
 {
-    public partial class TypeFix : Migration
+    public partial class FixTypoInMutationProperty : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
