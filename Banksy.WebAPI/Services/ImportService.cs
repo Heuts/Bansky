@@ -1,4 +1,5 @@
-﻿using Banksy.WebAPI.Models;
+﻿using Banksy.WebAPI.Data;
+using Banksy.WebAPI.Models;
 using CsvHelper;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -12,6 +13,12 @@ namespace Banksy.WebAPI.Services
 {
     public class ImportService : IImportService
     {
+        private BanksyContext context;
+        public ImportService(BanksyContext context)
+        {
+            this.context = context;
+        }
+
         public void ImportExcel(IFormFile file)
         {
             using (var memoryStream = new MemoryStream())
@@ -23,8 +30,10 @@ namespace Banksy.WebAPI.Services
                 csv.Configuration.RegisterClassMap<MutationMap>();
                 csv.Configuration.Delimiter = ",";
 
-                var records = csv.GetRecords<Mutation>();
+                IEnumerable<Mutation> mutations = csv.GetRecords<Mutation>();
 
+                context.Mutations.AddRange(mutations);
+                context.SaveChanges();
             }
         }
     }
