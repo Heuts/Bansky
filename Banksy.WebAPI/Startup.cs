@@ -38,7 +38,7 @@ namespace Banksy.WebAPI
             };
 
             services.AddDbContext<BanksyContext>(optionActionCreator(webApiConnectionString));
-            services.AddScoped<ImportService>();
+            services.AddScoped<IImportService, ImportService>();
             services.AddControllers();
 
             services.AddCors(options =>
