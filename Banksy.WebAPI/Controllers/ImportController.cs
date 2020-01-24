@@ -12,9 +12,9 @@ namespace Banksy.WebAPI.Controllers
     [ApiController]
     public class ImportController : ControllerBase
     {
-        private ImportService importService;
+        private IImportService importService;
 
-        public ImportController (ImportService importService)
+        public ImportController (IImportService importService)
         {
             this.importService = importService;
         }
