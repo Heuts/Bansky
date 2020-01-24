@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CsvHelper.Configuration.Attributes;
+using System;
 
 namespace Banksy.WebAPI.Models
 {
@@ -12,7 +13,7 @@ namespace Banksy.WebAPI.Models
         public string Code { get; set; }
         public string DebitCredit { get; set; }
         public double Amount { get; set; }
-        public string MutaionType { get; set; }
+        public string MutationType { get; set; }
         public string Description { get; set; }
     }
 }
