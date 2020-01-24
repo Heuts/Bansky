@@ -1,4 +1,4 @@
-using Banksy.WebAPI.Models;
+﻿using Banksy.WebAPI.Models;
 using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
@@ -25,23 +25,4 @@ namespace Banksy.WebAPI.Services
             Map(m => m.Description).Name("Mededelingen");
         }
     }
-
-	//public class CustomDateTimeConverter : DateTimeConverter
-	//{
-	//	public override object ConvertFromString(string text, IReaderRow row, MemberMapData memberMapData)
-	//	{
-	//		try
-	//		{
-	//			return base.ConvertFromString(text, row, memberMapData);
-	//		}
-	//		catch (TypeConverterException)
-	//		{
-	//			return default(DateTime);
-	//		}
-	//		catch
-	//		{
-	//			throw;
-	//		}
-	//	}
-	//}
 }
