@@ -1,4 +1,4 @@
-﻿using Banksy.WebAPI.Models;
+using Banksy.WebAPI.Models;
 using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
@@ -14,7 +14,7 @@ namespace Banksy.WebAPI.Services
         public MutationMap()
         {
             Map(m => m.Id).Ignore();
-            Map(m => m.Date).Name("Datum").TypeConverterOption.Format("yyyymmdd");
+            Map(m => m.Date).Name("Datum").TypeConverterOption.Format("yyyyMMdd");
 			Map(m => m.Name).Name("Naam / Omschrijving");
             Map(m => m.AccountNumber).Name("Rekening");
             Map(m => m.ContraAccount).Name("Tegenrekening");
