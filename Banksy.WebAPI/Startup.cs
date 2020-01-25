@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Banksy.WebAPI.Data;
 using Banksy.WebAPI.Services;
 using Microsoft.AspNetCore.Builder;
@@ -39,6 +40,7 @@ namespace Banksy.WebAPI
 
             services.AddDbContext<BanksyContext>(optionActionCreator(webApiConnectionString));
             services.AddScoped<IImportService, ImportService>();
+            services.AddScoped<IMutationService, MutationService>();
             services.AddControllers();
 
             services.AddCors(options =>
@@ -52,6 +54,13 @@ namespace Banksy.WebAPI
                         .AllowAnyMethod();
                 });
             });
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new MappingProfile());
+            });
+            services.AddSingleton(config.CreateMapper());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
