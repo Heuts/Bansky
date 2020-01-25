@@ -37,6 +37,7 @@ export function getApiBaseUrlFactory(configService: ConfigService) {
     IconsModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
+      { path: "mutation-overview", component: MutationOverviewComponent, pathMatch: "full" },
     ])
   ],
   providers: [
