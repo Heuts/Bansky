@@ -10,6 +10,7 @@ import { ConfigService } from "./services/config.service";
 import { API_BASE_URL } from "./injection-tokens/api-base-url-token";
 import { UploadService } from "./services/upload.service";
 import { IconsModule } from "./icons/icons.module";
+import { MutationOverviewComponent } from './components/mutation-overview/mutation-overview.component';
 
 export function init(configService: ConfigService): Function {
   return () => {
@@ -26,7 +27,8 @@ export function getApiBaseUrlFactory(configService: ConfigService) {
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent
+    HomeComponent,
+    MutationOverviewComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
