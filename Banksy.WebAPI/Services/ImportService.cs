@@ -19,11 +19,11 @@ namespace Banksy.WebAPI.Services
             this.context = context;
         }
 
-        public int ImportExcel(IFormFile file)
+        public async Task<int> ImportExcel(IFormFile file)
         {
             using (var memoryStream = new MemoryStream())
             {
-                file.CopyToAsync(memoryStream);
+                await file.CopyToAsync(memoryStream);
                 memoryStream.Position = 0;
                 TextReader textReader = new StreamReader(memoryStream);
                 var csv = new CsvReader(textReader, new CultureInfo("nl-NL"));
@@ -32,8 +32,8 @@ namespace Banksy.WebAPI.Services
 
                 Mutation[] mutations = csv.GetRecords<Mutation>().ToArray();
 
-                context.Mutations.AddRange(mutations);
-                context.SaveChanges();
+                await context.Mutations.AddRangeAsync(mutations);
+                await context.SaveChangesAsync();
 
                 int count = mutations.Length;
                 return count;
