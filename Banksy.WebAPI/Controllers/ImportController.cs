@@ -29,7 +29,7 @@ namespace Banksy.WebAPI.Controllers
 
                 if (file.Length > 0)
                 {
-                    await Task.Run(() => count = importService.ImportExcel(file));
+                    count = await importService.ImportExcel(file);
                 }
                 return Ok(count);
             }
