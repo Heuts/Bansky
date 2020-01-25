@@ -9,6 +9,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { ConfigService } from "./services/config.service";
 import { API_BASE_URL } from "./injection-tokens/api-base-url-token";
 import { UploadService } from "./services/upload.service";
+import { IconsModule } from "./icons/icons.module";
 
 export function init(configService: ConfigService): Function {
   return () => {
@@ -31,6 +32,7 @@ export function getApiBaseUrlFactory(configService: ConfigService) {
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
     HttpClientModule,
     FormsModule,
+    IconsModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
     ])

@@ -19,7 +19,7 @@ namespace Banksy.WebAPI.Services
             this.context = context;
         }
 
-        public void ImportExcel(IFormFile file)
+        public int ImportExcel(IFormFile file)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -30,10 +30,13 @@ namespace Banksy.WebAPI.Services
                 csv.Configuration.RegisterClassMap<MutationMap>();
                 csv.Configuration.Delimiter = ",";
 
-                IEnumerable<Mutation> mutations = csv.GetRecords<Mutation>();
+                Mutation[] mutations = csv.GetRecords<Mutation>().ToArray();
 
                 context.Mutations.AddRange(mutations);
                 context.SaveChanges();
+
+                int count = mutations.Length;
+                return count;
             }
         }
     }

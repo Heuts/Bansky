@@ -22,15 +22,16 @@ namespace Banksy.WebAPI.Controllers
         [DisableRequestSizeLimit]
         public async Task<ActionResult> UploadFilesAsync()
         {
+            int count = 0;
             try
             {
                 IFormFile file = Request.Form.Files[0];
 
                 if (file.Length > 0)
                 {
-                    await Task.Run(() => importService.ImportExcel(file));
+                    await Task.Run(() => count = importService.ImportExcel(file));
                 }
-                return Ok(file.Name);
+                return Ok(count);
             }
             catch (Exception ex)
             {

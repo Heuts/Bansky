@@ -20,8 +20,6 @@ export class UploadService {
   uploadFile(file: File) {
     const formData = new FormData();
     formData.append(file.name, file);
-
-    console.log(formData);
     return this.http.post(`${this.baseUrl}`, formData, {
       responseType: "text"
     });
