@@ -23,5 +23,11 @@ namespace Banksy.WebAPI.Services
         {
             return await context.Mutations.Select(m => mapper.Map<DTOs.Mutation>(m)).ToListAsync();
         }
+
+        public async Task<List<Models.Mutation>> RemoveDuplicates(List<Models.Mutation> newMutations)
+        {
+            var existingMutations = await context.Mutations.ToArrayAsync();
+            return newMutations.Except(existingMutations).ToList();
+        }
     }
 }

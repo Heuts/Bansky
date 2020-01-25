@@ -8,5 +8,7 @@ namespace Banksy.WebAPI.Services
     public interface IMutationService
     {
         Task<List<DTOs.Mutation>> GetAllMutations();
+
+        Task<List<Models.Mutation>> RemoveDuplicates(List<Models.Mutation> newMutations);
     }
 }
