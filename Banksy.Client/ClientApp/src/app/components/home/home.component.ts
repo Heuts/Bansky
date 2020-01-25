@@ -3,7 +3,8 @@ import { UploadService } from "src/app/services/upload.service";
 
 @Component({
   selector: "app-home",
-  templateUrl: "./home.component.html"
+  templateUrl: "./home.component.html",
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
   fileToUpload: File = null;
