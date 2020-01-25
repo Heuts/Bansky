@@ -7,8 +7,6 @@ import { HttpClient } from "@angular/common/http";
 })
 export class UploadService {
   private baseUrl: string;
-  public progress: number;
-  public message: string;
 
   constructor(
     private http: HttpClient,
