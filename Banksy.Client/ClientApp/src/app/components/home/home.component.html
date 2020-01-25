@@ -6,7 +6,7 @@
       id="file"
       (change)="uploadFileToActivity($event.target.files)"
     />
-    <label class="custom-file-label" for="file">Upload CSV</label>
+    <label class="custom-file-label" for="file"><span *ngIf="loading" class="spinner-border spinner-border-sm"></span>Upload CSV</label>
   </div>
 
   <div
