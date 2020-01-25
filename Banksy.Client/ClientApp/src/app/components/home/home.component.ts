@@ -9,21 +9,25 @@ import { UploadService } from "src/app/services/upload.service";
 export class HomeComponent implements OnInit {
   private fileToUpload: File;
   private showAlert: boolean;
+  private isUploading: boolean;
   public amountOfMutations: number;
 
   constructor(private uploadService: UploadService) {}
 
   ngOnInit(): void {
     this.showAlert = false;
+    this.isUploading = false;
     this.fileToUpload = null;
   }
 
   uploadFileToActivity(files: FileList) {
     this.fileToUpload = files.item(0);
+    this.isUploading = true;
     this.uploadService.uploadFile(this.fileToUpload).subscribe(
       data => {
         this.amountOfMutations = +data;
         this.showAlert = true;
+        this.isUploading = false;
       },
       error => {
         console.log(error);
