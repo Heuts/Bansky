@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { UploadService } from "src/app/services/upload.service";
 
 @Component({
@@ -6,12 +6,17 @@ import { UploadService } from "src/app/services/upload.service";
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.css"]
 })
-export class HomeComponent {
-  private fileToUpload: File = null;
-  private showAlert: boolean = false;
+export class HomeComponent implements OnInit {
+  private fileToUpload: File;
+  private showAlert: boolean;
   public amountOfMutations: number;
 
   constructor(private uploadService: UploadService) {}
+
+  ngOnInit(): void {
+    this.showAlert = false;
+    this.fileToUpload = null;
+  }
 
   uploadFileToActivity(files: FileList) {
     this.fileToUpload = files.item(0);
