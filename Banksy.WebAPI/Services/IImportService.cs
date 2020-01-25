@@ -8,6 +8,6 @@ namespace Banksy.WebAPI.Services
 {
     public interface IImportService
     {
-        void ImportExcel(IFormFile file);
+        int ImportExcel(IFormFile file);
     }
 }
