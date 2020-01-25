@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule, APP_INITIALIZER } from "@angular/core";
+import { NgModule, APP_INITIALIZER, LOCALE_ID } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
@@ -10,7 +10,11 @@ import { ConfigService } from "./services/config.service";
 import { API_BASE_URL } from "./injection-tokens/api-base-url-token";
 import { UploadService } from "./services/upload.service";
 import { IconsModule } from "./icons/icons.module";
-import { MutationOverviewComponent } from './components/mutation-overview/mutation-overview.component';
+import { MutationOverviewComponent } from "./components/mutation-overview/mutation-overview.component";
+import { registerLocaleData } from "@angular/common";
+import localeNL from "@angular/common/locales/nl";
+
+registerLocaleData(localeNL);
 
 export function init(configService: ConfigService): Function {
   return () => {
@@ -37,10 +41,15 @@ export function getApiBaseUrlFactory(configService: ConfigService) {
     IconsModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
-      { path: "mutation-overview", component: MutationOverviewComponent, pathMatch: "full" },
+      {
+        path: "mutation-overview",
+        component: MutationOverviewComponent,
+        pathMatch: "full"
+      }
     ])
   ],
   providers: [
+    { provide: LOCALE_ID, useValue: "nl-NL" },
     ConfigService,
     UploadService,
     {
