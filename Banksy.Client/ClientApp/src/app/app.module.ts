@@ -1,14 +1,11 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, APP_INITIALIZER } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
-
 import { AppComponent } from "./app.component";
 import { NavMenuComponent } from "./components/nav-menu/nav-menu.component";
 import { HomeComponent } from "./components/home/home.component";
-import { CounterComponent } from "./components/counter/counter.component";
-import { FetchDataComponent } from "./components/fetch-data/fetch-data.component";
 import { ConfigService } from "./services/config.service";
 import { API_BASE_URL } from "./injection-tokens/api-base-url-token";
 import { UploadService } from "./services/upload.service";
@@ -28,9 +25,7 @@ export function getApiBaseUrlFactory(configService: ConfigService) {
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
@@ -38,8 +33,6 @@ export function getApiBaseUrlFactory(configService: ConfigService) {
     FormsModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
-      { path: "counter", component: CounterComponent },
-      { path: "fetch-data", component: FetchDataComponent }
     ])
   ],
   providers: [
