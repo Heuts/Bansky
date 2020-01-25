@@ -13,7 +13,11 @@ export class MutationOverviewComponent implements OnInit {
 
   constructor(private mutationService: MutationService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.loadMutations();
+  }
+
+  private loadMutations(): void {
     this.isLoading = true;
     this.mutationService.getAllMutations().subscribe(m => {
       this.mutations = this.mutationService.sortByDate(m);
