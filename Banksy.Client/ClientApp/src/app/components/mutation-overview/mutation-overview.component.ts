@@ -9,10 +9,15 @@ import { MutationDTO } from "src/app/dtos/mutation.dto";
 })
 export class MutationOverviewComponent implements OnInit {
   public mutations: MutationDTO[];
+  private isLoading: boolean;
 
   constructor(private mutationService: MutationService) {}
 
   ngOnInit() {
-    this.mutationService.getAllMutations().subscribe(m => (this.mutations = m));
+    this.isLoading = true;
+    this.mutationService.getAllMutations().subscribe(m => {
+      this.mutations = this.mutationService.sortByDate(m);
+      this.isLoading = false;
+    });
   }
 }
