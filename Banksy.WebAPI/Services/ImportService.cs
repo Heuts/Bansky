@@ -14,9 +14,12 @@ namespace Banksy.WebAPI.Services
     public class ImportService : IImportService
     {
         private BanksyContext context;
-        public ImportService(BanksyContext context)
+        private IMutationService mutationService;
+
+        public ImportService(BanksyContext context, IMutationService mutationService)
         {
             this.context = context;
+            this.mutationService = mutationService;
         }
 
         public async Task<int> ImportExcel(IFormFile file)
@@ -30,13 +33,14 @@ namespace Banksy.WebAPI.Services
                 csv.Configuration.RegisterClassMap<MutationMap>();
                 csv.Configuration.Delimiter = ",";
 
-                Mutation[] mutations = csv.GetRecords<Mutation>().ToArray();
+                List<Mutation> mutations = csv.GetRecords<Mutation>().ToList();
+
+                List<Mutation> mutationsToAdd = await mutationService.RemoveDuplicates(mutations);
 
                 await context.Mutations.AddRangeAsync(mutations);
                 await context.SaveChangesAsync();
 
-                int count = mutations.Length;
-                return count;
+                return mutationsToAdd.Count;
             }
         }
     }
