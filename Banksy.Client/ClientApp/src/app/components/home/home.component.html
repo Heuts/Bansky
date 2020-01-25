@@ -1,5 +1,26 @@
-<div class="center">
-  <input type="file"
-         id="file"
-         (change)="uploadFileToActivity($event.target.files)">
+<div>
+  <div class="custom-file center skinny">
+    <input
+      type="file"
+      class="custom-file-input"
+      id="file"
+      (change)="uploadFileToActivity($event.target.files)"
+    />
+    <label class="custom-file-label" for="file">Upload CSV</label>
+  </div>
+
+  <div
+    *ngIf="showAlert"
+    class="alert alert-success alert-dismissible fade show bottom"
+  >
+    <button
+      type="button"
+      class="close"
+      data-dismiss="alert"
+      (click)="closeAlert()"
+    >
+      &times;
+    </button>
+    <strong>Success!</strong> A total of {{ amountOfMutations }} mutations are added to the database ✅
+  </div>
 </div>

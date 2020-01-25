@@ -4,10 +4,12 @@ import { UploadService } from "src/app/services/upload.service";
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
-  styleUrls: ['./home.component.css']
+  styleUrls: ["./home.component.css"]
 })
 export class HomeComponent {
-  fileToUpload: File = null;
+  private fileToUpload: File = null;
+  private showAlert: boolean = false;
+  public amountOfMutations: number;
 
   constructor(private uploadService: UploadService) {}
 
@@ -15,11 +17,16 @@ export class HomeComponent {
     this.fileToUpload = files.item(0);
     this.uploadService.uploadFile(this.fileToUpload).subscribe(
       data => {
-        // do something, if upload success
+        this.amountOfMutations = +data;
+        this.showAlert = true;
       },
       error => {
         console.log(error);
       }
     );
+  }
+
+  closeAlert(): void {
+    this.showAlert = false;
   }
 }
