@@ -37,7 +37,7 @@ namespace Banksy.WebAPI.Services
 
                 List<Mutation> mutationsToAdd = await mutationService.RemoveDuplicates(mutations);
 
-                await context.Mutations.AddRangeAsync(mutations);
+                await context.Mutations.AddRangeAsync(mutationsToAdd);
                 await context.SaveChangesAsync();
 
                 return mutationsToAdd.Count;
