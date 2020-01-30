@@ -26,4 +26,8 @@ export class MutationService {
       a.date > b.date ? -1 : a.date < b.date ? 1 : 0
     );
   }
+
+  getMutation(mutationId: number): Observable<MutationDTO> {
+    return this.http.get<MutationDTO>(`${this.baseUrl}/` + mutationId);
+  }
 }
