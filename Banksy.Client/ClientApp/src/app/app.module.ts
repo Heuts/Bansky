@@ -2,7 +2,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, APP_INITIALIZER, LOCALE_ID } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
 import { NavMenuComponent } from "./components/nav-menu/nav-menu.component";
 import { HomeComponent } from "./components/home/home.component";
@@ -13,6 +12,7 @@ import { IconsModule } from "./icons/icons.module";
 import { MutationOverviewComponent } from "./components/mutation-overview/mutation-overview.component";
 import { registerLocaleData } from "@angular/common";
 import localeNL from "@angular/common/locales/nl";
+import { AppRoutingModule } from './app-routing.module';
 
 registerLocaleData(localeNL);
 
@@ -39,14 +39,7 @@ export function getApiBaseUrlFactory(configService: ConfigService) {
     HttpClientModule,
     FormsModule,
     IconsModule,
-    RouterModule.forRoot([
-      { path: "", component: HomeComponent, pathMatch: "full" },
-      {
-        path: "mutation-overview",
-        component: MutationOverviewComponent,
-        pathMatch: "full"
-      }
-    ])
+    AppRoutingModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "nl-NL" },
