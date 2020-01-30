@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Banksy.WebAPI.Data;
+using Banksy.WebAPI.DTOs;
+using Banksy.WebAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,12 @@ namespace Banksy.WebAPI.Services
         public async Task<List<DTOs.Mutation>> GetAllMutations()
         {
             return await context.Mutations.Select(m => mapper.Map<DTOs.Mutation>(m)).ToListAsync();
+        }
+
+        public async Task<DTOs.Mutation> GetMutation(int id)
+        {
+            var mutation = await context.Mutations.SingleAsync(m => m.Id == id);
+            return mapper.Map<DTOs.Mutation>(mutation);
         }
 
         public async Task<List<Models.Mutation>> RemoveDuplicates(List<Models.Mutation> newMutations)

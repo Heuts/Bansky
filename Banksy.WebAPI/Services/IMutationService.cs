@@ -10,5 +10,7 @@ namespace Banksy.WebAPI.Services
         Task<List<DTOs.Mutation>> GetAllMutations();
 
         Task<List<Models.Mutation>> RemoveDuplicates(List<Models.Mutation> newMutations);
+
+        Task<DTOs.Mutation> GetMutation(int id);
     }
 }

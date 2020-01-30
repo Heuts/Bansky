@@ -12,6 +12,7 @@ import { IconsModule } from "./icons/icons.module";
 import { MutationOverviewComponent } from "./components/mutation-overview/mutation-overview.component";
 import { registerLocaleData } from "@angular/common";
 import localeNL from "@angular/common/locales/nl";
+import { MutationDetailComponent } from './components/mutation-detail/mutation-detail.component';
 import { AppRoutingModule } from './app-routing.module';
 
 registerLocaleData(localeNL);
@@ -32,7 +33,8 @@ export function getApiBaseUrlFactory(configService: ConfigService) {
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    MutationOverviewComponent
+    MutationOverviewComponent,
+    MutationDetailComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
