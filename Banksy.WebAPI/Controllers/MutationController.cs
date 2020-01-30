@@ -24,5 +24,11 @@ namespace Banksy.WebAPI.Controllers
         {
             return Ok(await mutationService.GetAllMutations());
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetMutation(int id)
+        {
+            return Ok(await mutationService.GetMutation(id));
+        }
     }
 }
