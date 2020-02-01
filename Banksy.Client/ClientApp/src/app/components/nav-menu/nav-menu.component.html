@@ -21,24 +21,25 @@
         [ngClass]="{ show: isExpanded }"
       >
         <ul class="navbar-nav flex-grow">
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+          <li class="nav-item">
+            <a class="nav-link text-dark" [routerLink]="['/mutation-overview']"
+              >Mutations</a
+            >
           </li>
         </ul>
         <ul class="navbar-nav flex-grow">
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link text-dark" [routerLink]="['/mutation-overview']">Mutations</a>
+          <li class="nav-item">
+            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
           </li>
         </ul>
       </div>
+      <ul class="nav navbar-nav w-100 justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/Heuts"
+            ><i-feather name="github"></i-feather
+          ></a>
+        </li>
+      </ul>
     </div>
   </nav>
 </header>
