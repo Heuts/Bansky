@@ -10,6 +10,7 @@ namespace Banksy.WebAPI.Data
     public class BanksyContext : DbContext
     {
         public DbSet<Mutation> Mutations { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

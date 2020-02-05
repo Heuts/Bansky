@@ -15,7 +15,7 @@ namespace Banksy.WebAPI.Models
         public double Amount { get; set; }
         public string MutationType { get; set; }
         public string Description { get; set; }
-        public Category category { get; set; }
+        public Category Category { get; set; }
 
         public bool Equals([AllowNull] Mutation other)
         {

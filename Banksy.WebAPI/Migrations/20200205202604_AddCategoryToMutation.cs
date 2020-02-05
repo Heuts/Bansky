@@ -7,7 +7,7 @@ namespace Banksy.WebAPI.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "categoryId",
+                name: "CategoryId",
                 table: "Mutations",
                 nullable: true);
 
@@ -49,9 +49,9 @@ namespace Banksy.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Mutations_categoryId",
+                name: "IX_Mutations_CategoryId",
                 table: "Mutations",
-                column: "categoryId");
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_CategoryId",
@@ -59,9 +59,9 @@ namespace Banksy.WebAPI.Migrations
                 column: "CategoryId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Mutations_Categories_categoryId",
+                name: "FK_Mutations_Categories_CategoryId",
                 table: "Mutations",
-                column: "categoryId",
+                column: "CategoryId",
                 principalTable: "Categories",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
@@ -70,18 +70,18 @@ namespace Banksy.WebAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Mutations_Categories_categoryId",
+                name: "FK_Mutations_Categories_CategoryId",
                 table: "Mutations");
 
             migrationBuilder.DropTable(
                 name: "Categories");
 
             migrationBuilder.DropIndex(
-                name: "IX_Mutations_categoryId",
+                name: "IX_Mutations_CategoryId",
                 table: "Mutations");
 
             migrationBuilder.DropColumn(
-                name: "categoryId",
+                name: "CategoryId",
                 table: "Mutations");
         }
     }

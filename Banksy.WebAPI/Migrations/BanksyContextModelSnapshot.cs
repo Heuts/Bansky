@@ -104,6 +104,9 @@ namespace Banksy.WebAPI.Migrations
                     b.Property<double>("Amount")
                         .HasColumnType("float");
 
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
@@ -125,12 +128,9 @@ namespace Banksy.WebAPI.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("categoryId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("categoryId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Mutations");
                 });
@@ -144,9 +144,9 @@ namespace Banksy.WebAPI.Migrations
 
             modelBuilder.Entity("Banksy.WebAPI.Models.Mutation", b =>
                 {
-                    b.HasOne("Banksy.WebAPI.Models.Category", "category")
+                    b.HasOne("Banksy.WebAPI.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("categoryId");
+                        .HasForeignKey("CategoryId");
                 });
 #pragma warning restore 612, 618
         }
