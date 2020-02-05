@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MutationService } from "src/app/services/mutation.service";
-import { MutationDTO } from "src/app/dtos/mutation.dto";
+import { MutationDto } from "src/app/dtos/mutation.dto";
 import { map } from "rxjs/operators";
 
 @Component({
@@ -9,7 +9,7 @@ import { map } from "rxjs/operators";
   styleUrls: ["./mutation-overview.component.css"]
 })
 export class MutationOverviewComponent implements OnInit {
-  public mutations: MutationDTO[];
+  public mutations: MutationDto[];
   private isLoading: boolean;
 
   constructor(private mutationService: MutationService) {}

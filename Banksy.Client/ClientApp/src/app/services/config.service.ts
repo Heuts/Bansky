@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { publishReplay, refCount, map } from 'rxjs/operators';
-import { ConfigDto } from '../dtos/config-dto';
+import { ConfigDto } from '../dtos/config.dto';
 
 @Injectable({
   providedIn: 'root'

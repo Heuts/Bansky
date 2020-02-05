@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { map } from "rxjs/operators";
-import { MutationDTO } from "src/app/dtos/mutation.dto";
+import { MutationDto } from "src/app/dtos/mutation.dto";
 import { MutationService } from "src/app/services/mutation.service";
 
 @Component({
@@ -10,7 +10,7 @@ import { MutationService } from "src/app/services/mutation.service";
   styleUrls: ["./mutation-detail.component.css"]
 })
 export class MutationDetailComponent implements OnInit {
-  mutation: MutationDTO;
+  mutation: MutationDto;
   mutationId: number;
 
   constructor(

@@ -1,4 +1,4 @@
-export interface MutationDTO {
+export interface MutationDto {
     id: number;
     date: Date;
     name: string;
