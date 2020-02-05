@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MutationService } from "src/app/services/mutation.service";
 import { MutationDTO } from "src/app/dtos/mutation.dto";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: "app-mutation-overview",
@@ -19,9 +20,12 @@ export class MutationOverviewComponent implements OnInit {
 
   private loadMutations(): void {
     this.isLoading = true;
-    this.mutationService.getAllMutations().subscribe(m => {
-      this.mutations = this.mutationService.sortByDate(m);
-      this.isLoading = false;
-    });
+    this.mutationService
+      .getAllMutations()
+      .pipe(map(m => this.mutationService.sortByDate(m)))
+      .subscribe(m => {
+        this.mutations = m;
+        this.isLoading = false;
+      });
   }
 }
