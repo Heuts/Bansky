@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Banksy.WebAPI.Migrations
 {
     [DbContext(typeof(BanksyContext))]
-    [Migration("20200202210835_AddCategoryToMutation")]
+    [Migration("20200205201948_AddCategoryToMutation")]
     partial class AddCategoryToMutation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,7 +38,7 @@ namespace Banksy.WebAPI.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new

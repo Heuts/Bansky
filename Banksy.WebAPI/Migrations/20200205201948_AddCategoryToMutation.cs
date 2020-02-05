@@ -12,7 +12,7 @@ namespace Banksy.WebAPI.Migrations
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -22,17 +22,17 @@ namespace Banksy.WebAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Category_Category_CategoryId",
+                        name: "FK_Categories_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Category",
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
-                table: "Category",
+                table: "Categories",
                 columns: new[] { "Id", "CategoryId", "Name" },
                 values: new object[,]
                 {
@@ -54,15 +54,15 @@ namespace Banksy.WebAPI.Migrations
                 column: "categoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Category_CategoryId",
-                table: "Category",
+                name: "IX_Categories_CategoryId",
+                table: "Categories",
                 column: "CategoryId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Mutations_Category_categoryId",
+                name: "FK_Mutations_Categories_categoryId",
                 table: "Mutations",
                 column: "categoryId",
-                principalTable: "Category",
+                principalTable: "Categories",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -70,11 +70,11 @@ namespace Banksy.WebAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Mutations_Category_categoryId",
+                name: "FK_Mutations_Categories_categoryId",
                 table: "Mutations");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "Categories");
 
             migrationBuilder.DropIndex(
                 name: "IX_Mutations_categoryId",

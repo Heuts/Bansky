@@ -36,7 +36,7 @@ namespace Banksy.WebAPI.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
