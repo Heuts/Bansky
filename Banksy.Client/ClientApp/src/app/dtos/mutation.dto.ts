@@ -9,4 +9,5 @@ export interface MutationDto {
     amount: number;
     mutationType: string;
     description: string;
+    categoryId: number;
   }
