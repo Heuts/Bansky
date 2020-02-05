@@ -31,6 +31,11 @@ namespace Banksy.WebAPI.Services
             var mutation = await context.Mutations.SingleAsync(m => m.Id == id);
             return mapper.Map<DTOs.Mutation>(mutation);
         }
+        public async Task<DTOs.Category> GetCategory(int id)
+        {
+            var category = await context.Categories.SingleAsync(c => c.Id == id);
+            return mapper.Map<DTOs.Category>(category);
+        }
 
         public async Task<List<Models.Mutation>> RemoveDuplicates(List<Models.Mutation> newMutations)
         {
