@@ -17,5 +17,6 @@ namespace Banksy.WebAPI.DTOs
         public double Amount { get; set; }
         public string MutationType { get; set; }
         public string Description { get; set; }
+        public int CategoryId { get; set; }
     }
 }
