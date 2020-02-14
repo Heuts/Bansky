@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using Banksy.WebAPI.Data;
-using Banksy.WebAPI.DTOs;
-using Banksy.WebAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -23,7 +21,9 @@ namespace Banksy.WebAPI.Services
 
         public async Task<List<DTOs.Mutation>> GetAllMutations()
         {
-            return await context.Mutations.Select(m => mapper.Map<DTOs.Mutation>(m)).ToListAsync();
+            return await context.Mutations
+                .Select(m => mapper.Map<DTOs.Mutation>(m))
+                .ToListAsync();
         }
 
         public async Task<DTOs.Mutation> GetMutation(int id)
@@ -37,10 +37,39 @@ namespace Banksy.WebAPI.Services
             return mapper.Map<DTOs.Category>(category);
         }
 
+        public async Task<List<DTOs.Mutation>> GetMutationsByPageAndSize(int page, int size)
+        {
+            // New performing code thanks to Willem
+            return await context.Mutations
+                .Where(x => context.Mutations
+                    .OrderByDescending(m => m.Date)
+                    .Select(y => y.Id)
+                    .Skip((page - 1) * size)
+                    .Take(size)
+                    .Contains(x.Id))
+                .Select(m => mapper.Map<DTOs.Mutation>(m))
+                .ToListAsync();
+
+            // Old non performing code
+
+            //return await context.Mutations
+            //    .OrderByDescending(m => m.Date)
+            //    .Skip((page - 1) * size)
+            //    .Take(size)
+            //    .Select(m => mapper.Map<DTOs.Mutation>(m))
+            //    .ToListAsync();
+        }
+
+        public async Task<int> GetTotalMutations()
+        {
+            return await context.Mutations.CountAsync();
+        }
+
         public async Task<List<Models.Mutation>> RemoveDuplicates(List<Models.Mutation> newMutations)
         {
-            var existingMutations = await context.Mutations.ToArrayAsync();
-            return newMutations.Except(existingMutations).ToList();
+            return newMutations
+                .Except(await context.Mutations.ToArrayAsync())
+                .ToList();
         }
     }
 }

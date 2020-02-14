@@ -31,6 +31,19 @@ namespace Banksy.WebAPI.Controllers
             return Ok(await mutationService.GetMutation(id));
         }
 
+        
+        [HttpGet("total")]
+        public async Task<IActionResult> GetTotalMutations()
+        {
+            return Ok(await mutationService.GetTotalMutations());
+        }
+
+        [HttpGet("page/{page}/{size}")]
+        public async Task<IActionResult> GetMutationsByPageAndSize(int page, int size)
+        {
+            return Ok(await mutationService.GetMutationsByPageAndSize(page, size));
+        }
+
         [HttpGet("category/{id}")]
         public async Task<IActionResult> GetCategory(int id)
         {
