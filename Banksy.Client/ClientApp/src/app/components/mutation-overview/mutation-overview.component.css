@@ -3,10 +3,25 @@
 }
 
 .spinner {
-  width: 8rem;
-  height: 8rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 .center {
     padding-top: 20%;
 }
+
+.justify-content-center {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+/* .loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.2);
+  z-index: 99;
+  left:0;
+  top:0;
+} */
