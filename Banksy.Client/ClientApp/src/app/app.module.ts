@@ -14,6 +14,7 @@ import { registerLocaleData } from "@angular/common";
 import localeNL from "@angular/common/locales/nl";
 import { MutationDetailComponent } from './components/mutation-detail/mutation-detail.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 registerLocaleData(localeNL);
 
@@ -41,7 +42,8 @@ export function getApiBaseUrlFactory(configService: ConfigService) {
     HttpClientModule,
     FormsModule,
     IconsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "nl-NL" },
@@ -61,4 +63,4 @@ export function getApiBaseUrlFactory(configService: ConfigService) {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
