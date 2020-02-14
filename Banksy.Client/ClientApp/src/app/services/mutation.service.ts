@@ -17,17 +17,15 @@ export class MutationService {
     this.baseUrl = `${apiServerUrl}/api/mutation`;
   }
 
-  getAllMutations(): Observable<MutationDto[]> {
-    return this.http.get<MutationDto[]>(`${this.baseUrl}/all`);
-  }
-
-  sortByDate(mutations: MutationDto[]) {
-    return mutations.sort((a, b) =>
-      a.date > b.date ? -1 : a.date < b.date ? 1 : 0
-    );
-  }
-
   getMutation(mutationId: number): Observable<MutationDto> {
     return this.http.get<MutationDto>(`${this.baseUrl}/` + mutationId);
+  }
+  
+  getMutationsByPageAndSize(page: number, size: number): Observable<MutationDto[]> {
+    return this.http.get<MutationDto[]>(`${this.baseUrl}/page/` + page + `/` + size);
+  }
+
+  getTotalMutations() {
+    return this.http.get<number>(`${this.baseUrl}/total`);
   }
 }
