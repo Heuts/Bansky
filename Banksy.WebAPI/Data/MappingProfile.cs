@@ -11,6 +11,7 @@ namespace Banksy.WebAPI.Data
         public MappingProfile()
         {
             CreateMap<Models.Mutation, DTOs.Mutation>();
+            CreateMap<Models.Category, DTOs.Category>();
         }
     }
 }
