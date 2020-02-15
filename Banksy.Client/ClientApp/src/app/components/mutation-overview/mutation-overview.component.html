@@ -12,6 +12,7 @@
         <th scope="col">Totaal</th>
         <th scope="col">Type</th>
         <th scope="col">Omschrijving</th>
+        <th scope="col">Categorie</th>
       </tr>
     </thead>
     <tbody>
@@ -26,19 +27,22 @@
         <td>{{ mutation.amount | currency: "EUR":symbol }}</td>
         <td>{{ mutation.mutationType }}</td>
         <td>{{ sliceDescription(mutation.description) }}</td>
+        <td (click)="false; $event.stopPropagation();">
+          <form>
+            <div class="form-group">
+              <select class="form-control">
+                <option *ngFor="let category of categories">{{ category.name }}</option>
+              </select>
+            </div>
+          </form>
+        </td>
       </tr>
     </tbody>
   </table>
-  
+
   <div class="col-12 justify-content-center mb-5">
-    <ngb-pagination 
-      [collectionSize]="totalItems" 
-      [pageSize]="itemsPerPage" 
-      [(page)]="page" 
-      [maxSize]="7" 
-      [rotate]="true" 
-      [boundaryLinks]="true"
-      (pageChange)="loadPage($event)">
+    <ngb-pagination [collectionSize]="totalItems" [pageSize]="itemsPerPage" [(page)]="page" [maxSize]="7"
+      [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)">
     </ngb-pagination>
   </div>
 
