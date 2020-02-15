@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { MutationService } from "src/app/services/mutation.service";
 import { MutationDto } from "src/app/dtos/mutation.dto";
 import { Router } from "@angular/router";
+import { Observable, timer, merge, combineLatest } from "rxjs";
+import { mapTo, takeUntil } from "rxjs/operators";
 
 @Component({
   selector: "app-mutation-overview",
@@ -10,7 +12,7 @@ import { Router } from "@angular/router";
 })
 export class MutationOverviewComponent implements OnInit {
   public mutations: MutationDto[];
-  private isLoading: boolean;
+  showSpinner: boolean;
   itemsPerPage: number = 10;
   totalItems: number;
   page: number = 1;
@@ -30,16 +32,27 @@ export class MutationOverviewComponent implements OnInit {
   }
 
   private loadMutations(): void {
-    this.isLoading = true;
-    this.mutationService
-      .getMutationsByPageAndSize(
-        this.page,
-        this.itemsPerPage,
-      )
-      .subscribe(m => {
-        this.mutations = m;
-        this.isLoading = false;
-      });
+    const miliSecDelayBeforeSpinning = 500;
+    const miliSecMinimalSpinningTime = 1000;
+
+    const mutations$: Observable<MutationDto[]> =
+      this.mutationService
+        .getMutationsByPageAndSize(
+          this.page,
+          this.itemsPerPage,
+        );
+
+    const showLoadingIndicator$ = merge(
+      timer(miliSecDelayBeforeSpinning).pipe(mapTo(true), takeUntil(mutations$)),
+      combineLatest(mutations$, timer(miliSecMinimalSpinningTime)).pipe(mapTo(false)));
+
+    mutations$.subscribe(mutations => {
+      this.mutations = mutations;
+    });
+
+    showLoadingIndicator$.subscribe(isLoading => {
+      this.showSpinner = isLoading;
+    });
   }
 
   loadPage(page) {
