@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MutationService } from "src/app/services/mutation.service";
 import { MutationDto } from "src/app/dtos/mutation.dto";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-mutation-overview",
@@ -15,7 +16,7 @@ export class MutationOverviewComponent implements OnInit {
   page: number = 1;
   previousPage: number;
 
-  constructor(private mutationService: MutationService) { }
+  constructor(private mutationService: MutationService, private route: Router) { }
 
   ngOnInit(): void {
     this.loadMutations();
@@ -24,8 +25,8 @@ export class MutationOverviewComponent implements OnInit {
 
   getTotalMutations() {
     this.mutationService
-    .getTotalMutations()
-    .subscribe(m => this.totalItems = m);
+      .getTotalMutations()
+      .subscribe(m => this.totalItems = m);
   }
 
   private loadMutations(): void {
@@ -46,5 +47,27 @@ export class MutationOverviewComponent implements OnInit {
       this.previousPage = page;
       this.loadMutations();
     }
+  }
+
+  sliceDescription(str: string) {
+    const maxLength: number = 100;
+    if (str.length > maxLength) {
+      return str.slice(0, maxLength).trim() + '...';
+    } else {
+      return str;
+    }
+  }
+
+  sliceName(str: string) {
+    const maxLength: number = 25;
+    if (str.length > maxLength) {
+      return str.slice(0, maxLength).trim() + '...';
+    } else {
+      return str;
+    }
+  }
+
+  navigateToMutationDetail(id: number) {
+    this.route.navigateByUrl(`mutation-detail/` + id);
   }
 }

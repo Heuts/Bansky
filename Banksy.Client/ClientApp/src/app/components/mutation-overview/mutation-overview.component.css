@@ -2,6 +2,14 @@
   width: 6rem;
 }
 
+#name-column {
+  width: 12rem;
+}
+
+#credit-debit-column {
+  width: 2rem;
+}
+
 .spinner {
   width: 5rem;
   height: 5rem;

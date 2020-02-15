@@ -3,43 +3,43 @@
     <thead class="thead-light">
       <tr>
         <!-- <th scope="col">#</th> -->
-        <th scope="col" id="date-column">Date</th>
-        <th scope="col">Name</th>
+        <th scope="col" id="date-column">Datum</th>
+        <th scope="col" id="name-column">Naam</th>
         <!-- <th scope="col">Bank account number</th> -->
         <!-- <th scope="col">Contra account</th> -->
         <!-- <th scope="col">Code</th> -->
-        <th scope="col">Credit/Debit</th>
-        <th scope="col">Amount</th>
-        <th scope="col">Mutation type</th>
-        <th scope="col">Description</th>
+        <th scope="col" id="credit-debit-column">Af/Bij</th>
+        <th scope="col">Totaal</th>
+        <th scope="col">Type</th>
+        <th scope="col">Omschrijving</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let mutation of mutations">
+      <tr *ngFor="let mutation of mutations" (click)="navigateToMutationDetail(mutation.id)">
         <!-- <td>{{ mutation.id }}</td> -->
         <td>{{ mutation.date | date: "d-M-yy" }}</td>
-        <td>{{ mutation.name }}</td>
+        <td>{{ sliceName(mutation.name) }}</td>
         <!-- <td>{{ mutation.accountNumber }}</td> -->
         <!-- <td>{{ mutation.contraAccount }}</td> -->
         <!-- <td>{{ mutation.code }}</td> -->
         <td>{{ mutation.debitCredit }}</td>
         <td>{{ mutation.amount | currency: "EUR":symbol }}</td>
         <td>{{ mutation.mutationType }}</td>
-        <td>{{ mutation.description }}</td>
+        <td>{{ sliceDescription(mutation.description) }}</td>
       </tr>
     </tbody>
   </table>
   
   <div class="col-12 justify-content-center mb-5">
     <ngb-pagination 
-    [collectionSize]="totalItems" 
-    [pageSize]="itemsPerPage" 
-    [(page)]="page" 
-    [maxSize]="7" 
-    [rotate]="true" 
-    [boundaryLinks]="true"
-    (pageChange)="loadPage($event)">
-  </ngb-pagination>
+      [collectionSize]="totalItems" 
+      [pageSize]="itemsPerPage" 
+      [(page)]="page" 
+      [maxSize]="7" 
+      [rotate]="true" 
+      [boundaryLinks]="true"
+      (pageChange)="loadPage($event)">
+    </ngb-pagination>
   </div>
 
   <div *ngIf="isLoading" class="col-12 justify-content-center loading">
