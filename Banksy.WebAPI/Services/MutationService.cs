@@ -71,5 +71,10 @@ namespace Banksy.WebAPI.Services
                 .Except(await context.Mutations.ToArrayAsync())
                 .ToList();
         }
+
+        public async Task<List<DTOs.Category>> GetAllCategories()
+        {
+            return await context.Categories.Select(c => mapper.Map<DTOs.Category>(c)).ToListAsync();
+        }
     }
 }
