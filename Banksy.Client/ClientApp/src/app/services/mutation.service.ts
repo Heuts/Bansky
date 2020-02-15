@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { API_BASE_URL } from "../injection-tokens/api-base-url-token";
 import { Observable } from "rxjs";
 import { MutationDto } from "../dtos/mutation.dto";
+import { CategoryDto } from "../dtos/category.dto";
 
 @Injectable({
   providedIn: "root"
@@ -27,5 +28,9 @@ export class MutationService {
 
   getTotalMutations() {
     return this.http.get<number>(`${this.baseUrl}/total`);
+  }
+
+  getCategories() {
+    return this.http.get<CategoryDto[]>(`${this.baseUrl}/categories`);
   }
 }
