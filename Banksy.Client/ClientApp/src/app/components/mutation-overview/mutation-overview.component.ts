@@ -4,6 +4,7 @@ import { MutationDto } from "src/app/dtos/mutation.dto";
 import { Router } from "@angular/router";
 import { Observable, timer, merge, combineLatest } from "rxjs";
 import { mapTo, takeUntil } from "rxjs/operators";
+import { CategoryDto } from "src/app/dtos/category.dto";
 
 @Component({
   selector: "app-mutation-overview",
@@ -11,7 +12,8 @@ import { mapTo, takeUntil } from "rxjs/operators";
   styleUrls: ["./mutation-overview.component.css"]
 })
 export class MutationOverviewComponent implements OnInit {
-  public mutations: MutationDto[];
+  mutations: MutationDto[];
+  categories: CategoryDto[];
   showSpinner: boolean;
   itemsPerPage: number = 10;
   totalItems: number;
@@ -23,6 +25,7 @@ export class MutationOverviewComponent implements OnInit {
   ngOnInit(): void {
     this.loadMutations();
     this.getTotalMutations();
+    this.getCategories();
   }
 
   getTotalMutations() {
@@ -31,7 +34,7 @@ export class MutationOverviewComponent implements OnInit {
       .subscribe(m => this.totalItems = m);
   }
 
-  private loadMutations(): void {
+  loadMutations() {
     const miliSecDelayBeforeSpinning = 500;
     const miliSecMinimalSpinningTime = 1000;
 
@@ -53,6 +56,13 @@ export class MutationOverviewComponent implements OnInit {
     showLoadingIndicator$.subscribe(isLoading => {
       this.showSpinner = isLoading;
     });
+  }
+
+  getCategories() {
+    this.mutationService.getCategories()
+      .subscribe(c => {
+        this.categories = c;
+      });
   }
 
   loadPage(page) {
