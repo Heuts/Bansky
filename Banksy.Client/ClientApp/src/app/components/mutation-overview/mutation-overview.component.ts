@@ -42,9 +42,13 @@ export class MutationOverviewComponent implements OnInit {
           this.itemsPerPage,
         );
 
-    const showLoadingIndicator$ = merge(
-      timer(miliSecDelayBeforeSpinning).pipe(mapTo(true), takeUntil(mutations$)),
-      combineLatest(mutations$, timer(miliSecMinimalSpinningTime)).pipe(mapTo(false)));
+    const showLoadingIndicator$ =
+      merge(
+        timer(miliSecDelayBeforeSpinning)
+          .pipe(mapTo(true), // turn the value into `true`, meaning loading is shown
+            takeUntil(mutations$)), // emit only if result$ wont emit before 500ms
+        combineLatest(mutations$, timer(miliSecMinimalSpinningTime))
+          .pipe(mapTo(false)));  // value 'false' once we receive a result, yet at least show 1000ms
 
     mutations$.subscribe(mutations => {
       this.mutations = mutations;
