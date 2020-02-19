@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banksy.Client", "Banksy.Client\Banksy.Client.csproj", "{C5FD118B-82BE-4E61-B1EE-577EDFE0846D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BanksyClient", "Banksy.Client\BanksyClient.csproj", "{C5FD118B-82BE-4E61-B1EE-577EDFE0846D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banksy.WebAPI", "Banksy.WebAPI\Banksy.WebAPI.csproj", "{F0C3978D-BAF7-4D4A-93C7-CEE97DFBA031}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Banksy.WebAPI", "Banksy.WebAPI\Banksy.WebAPI.csproj", "{F0C3978D-BAF7-4D4A-93C7-CEE97DFBA031}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
