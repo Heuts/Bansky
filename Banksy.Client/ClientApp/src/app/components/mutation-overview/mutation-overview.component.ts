@@ -8,7 +8,7 @@ import { mapTo, takeUntil } from "rxjs/operators";
 @Component({
   selector: "app-mutation-overview",
   templateUrl: "./mutation-overview.component.html",
-  styleUrls: ["./mutation-overview.component.css"]
+  styleUrls: ["./mutation-overview.component.scss"]
 })
 export class MutationOverviewComponent implements OnInit {
   public mutations: MutationDto[];

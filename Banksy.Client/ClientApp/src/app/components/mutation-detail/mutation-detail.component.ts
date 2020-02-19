@@ -7,7 +7,7 @@ import { MutationService } from "src/app/services/mutation.service";
 @Component({
   selector: "app-mutation-detail",
   templateUrl: "./mutation-detail.component.html",
-  styleUrls: ["./mutation-detail.component.css"]
+  styleUrls: ["./mutation-detail.component.scss"]
 })
 export class MutationDetailComponent implements OnInit {
   mutation: MutationDto;
