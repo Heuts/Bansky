@@ -8,8 +8,8 @@ import { UploadService } from "src/app/services/upload.service";
 })
 export class HomeComponent implements OnInit {
   private fileToUpload: File;
-  private showAlert: boolean;
-  private isUploading: boolean;
+  public showAlert: boolean;
+  public isUploading: boolean;
   public amountOfMutations: number;
 
   constructor(private uploadService: UploadService) {}
