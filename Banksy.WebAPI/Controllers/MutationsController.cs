@@ -6,11 +6,11 @@ namespace Banksy.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MutationController : ControllerBase
+    public class MutationsController : ControllerBase
     {
-        private IMutationService mutationService;
+        private IMutationsService mutationService;
 
-        public MutationController(IMutationService mutationService)
+        public MutationsController(IMutationsService mutationService)
         {
             this.mutationService = mutationService;
         }

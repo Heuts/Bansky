@@ -14,9 +14,9 @@ namespace Banksy.WebAPI.Services
     public class ImportService : IImportService
     {
         private BanksyContext context;
-        private IMutationService mutationService;
+        private IMutationsService mutationService;
 
-        public ImportService(BanksyContext context, IMutationService mutationService)
+        public ImportService(BanksyContext context, IMutationsService mutationService)
         {
             this.context = context;
             this.mutationService = mutationService;

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Banksy.WebAPI.Services.Interfaces
 {
-    public interface IMutationService
+    public interface IMutationsService
     {
         Task<List<DTOs.Mutation>> GetAllMutations();
 

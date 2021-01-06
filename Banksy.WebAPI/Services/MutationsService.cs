@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace Banksy.WebAPI.Services
 {
-    public class MutationService : IMutationService
+    public class MutationsService : IMutationsService
     {
         private BanksyContext context;
         private IMapper mapper;
 
-        public MutationService(BanksyContext context, IMapper mapper)
+        public MutationsService(BanksyContext context, IMapper mapper)
         {
             this.context = context;
             this.mapper = mapper;
