@@ -10,23 +10,23 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Banksy.WebAPI.Migrations
 {
     [DbContext(typeof(BanksyContext))]
-    [Migration("20200205202604_AddCategoryToMutation")]
-    partial class AddCategoryToMutation
+    [Migration("20210106164707_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.1")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.0");
 
             modelBuilder.Entity("Banksy.WebAPI.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
@@ -98,7 +98,7 @@ namespace Banksy.WebAPI.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("AccountNumber")
                         .HasColumnType("nvarchar(max)");
@@ -149,6 +149,13 @@ namespace Banksy.WebAPI.Migrations
                     b.HasOne("Banksy.WebAPI.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId");
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Banksy.WebAPI.Models.Category", b =>
+                {
+                    b.Navigation("SubCategories");
                 });
 #pragma warning restore 612, 618
         }
