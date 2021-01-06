@@ -1,11 +1,5 @@
 ﻿using Banksy.WebAPI.Models;
-using CsvHelper;
 using CsvHelper.Configuration;
-using CsvHelper.TypeConversion;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Banksy.WebAPI.Services
 {
