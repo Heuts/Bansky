@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Banksy.WebAPI.Services;
+using Banksy.WebAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Banksy.WebAPI.Controllers

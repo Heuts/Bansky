@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Banksy.WebAPI.Services;
+using Banksy.WebAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
